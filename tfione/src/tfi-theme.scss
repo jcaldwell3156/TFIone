@@ -1,0 +1,87 @@
+@use '@angular/material' as mat;
+
+$tfi-bluegreen: (
+    50 : #e5e9ec,
+    100 : #bfc9d0,
+    200 : #94a5b1,
+    300 : #698192,
+    400 : #48667a,
+    500 : #284b63,
+    600 : #24445b,
+    700 : #1e3b51,
+    800 : #183347,
+    900 : #0f2335,
+    A100 : #72b8ff,
+    A200 : #3f9fff,
+    A400 : #0c85ff,
+    A700 : #0079f1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$tfi-yellow: (
+    50 : #fefaee,
+    100 : #fdf3d4,
+    200 : #fcecb7,
+    300 : #fbe49a,
+    400 : #fade85,
+    500 : #f9d86f,
+    600 : #f8d467,
+    700 : #f7ce5c,
+    800 : #f6c852,
+    900 : #f5bf40,
+    A100 : #fdf3d4,
+    A200 : #f5bf40,
+    A400 : #fade85,
+    A700 : #f7ce5c,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+@include mat.core();
+
+$tfi-primary: mat.define-palette($tfi-bluegreen, 500);
+$tfi-accent: mat.define-palette($tfi-yellow, A200, A100, A400);
+$tfi-warn: mat.define-palette(mat.$red-palette);
+
+$tfi-theme: mat.define-light-theme((
+ color: (
+   primary: $tfi-primary,
+   accent: $tfi-accent,
+   warn: $tfi-warn,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.core-theme($tfi-theme);
+@include mat.all-component-themes($tfi-theme);
