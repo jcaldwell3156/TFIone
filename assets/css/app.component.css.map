@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../tfione/src/app/app.component.scss","app.component.css"],"names":[],"mappings":"AAAA;EACI,cAAA;ACCJ","file":"app.component.css","sourcesContent":[".example-spacer {\n    flex: 1 1 auto;\n  }",".example-spacer {\n  flex: 1 1 auto;\n}"]}
