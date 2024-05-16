@@ -1,0 +1,45 @@
+<h1>Authorization</h1>
+<ul class="no-bullet">
+    <li><strong>Foster Care Worker:</strong> Calista Case (FSW)</li>
+    <li><strong>Last Modified by:</strong> Ted Nugent on Sept 29, 2023</li>
+    <li><strong>Created by:</strong> Jimmy Buffet on Aug 09, 2023</li>
+</ul> 
+<div class="row">
+    <div class="col-sm-12 col-xl-10">
+        <div>
+            <mat-form-field>
+                <mat-label>Authorized Person</mat-label>
+                <mat-select>
+                @for (authPerson of authPersons; track authPerson) {
+                    <mat-option [value]="authPerson">{{authPerson}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>        
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Number of service units</mat-label>
+                <input type="number" matInput>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xl-6">
+                <mat-form-field>
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="authStartDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="authStartDate"></mat-datepicker-toggle>
+                    <mat-datepicker #authStartDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+                <mat-form-field>
+                    <mat-label>End Date</mat-label>
+                    <input matInput [matDatepicker]="authEndDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="authEndDate"></mat-datepicker-toggle>
+                    <mat-datepicker #authEndDate></mat-datepicker>
+                </mat-form-field>
+            </div>   
+        </div>         
+    </div> 
+</div>

@@ -55,16 +55,57 @@ $tfi-green25: #1b4144;
 $tfi-green15: #002b2e;
 $tfi-green5: #001416;
 
+:root {
+  --mat-surface: #F7F9FF;
+  --mat-surface-variant: #DDE3EA;
+  --mat-surface-container: #FFF;
+}
+html,
 body {
     margin: 0;
     background-color: var(--mat-sidenav-content-background-color);
+    background-color: var(--mat-surface-variant);
+
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
     
 }
+.ng-star-inserted { width: 100%;}
+
+.mat-drawer-container,
+.mat-drawer-content {
+    background-color: var(--mat-surface-variant) !important;
+}
+.container {
+  background-color: var(--mat-surface);
+  border-radius: 1em;
+  box-shadow: 0 2px 2px rgba($color: #000000, $alpha: 0.2);
+  justify-content: space-between;
+}
+
 
 .mat-drawer-container {
     min-height: 100vh;
 }
 
+.p {
+  &-1 {
+    padding: .2em;
+  }
+  &-2 {
+    padding: .4em;
+  }
+  &-3 {
+    padding: .6em;
+  }
+  &-4 {
+    padding: .8em;
+  }
+  &-5 {
+    padding: 1em;
+  }
+}
 
 .bebas-neue-regular {
     font-family: "Bebas Neue", sans-serif;
@@ -76,17 +117,19 @@ body {
     width: 220px;
   }
 
-  h1 {
+  h1, h2 {
     font-size: 3.125rem;
     color: var(--gray-900);
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.125rem;
-    margin: 0;
+    margin: 0 0 .5em;
     font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
   }
+
+  h2 { font-size: 2rem;}
 
   p {
     margin: 0;
@@ -97,7 +140,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.6rem;
     box-sizing: inherit;
     position: relative;
   }
@@ -106,12 +149,13 @@ body {
   }
   .right-side { margin-top: 1.75rem; }
   
+.container { padding: 1em;}
 
   .content {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-between; 
     width: 100%;
-    max-width: 1400px;
+    max-width: 1400px;*/
     margin-bottom: 3rem;
   }
 
@@ -142,3 +186,37 @@ body {
       margin-block: 1.5rem;
     }
   }
+
+  .d-flex {
+    display: flex;
+    align-items: flex-start;
+
+    &.flex-column {
+        flex-direction: column;
+    }
+    &.flex-row {
+        flex-direction: row;
+        margin:0 -.4em;
+    }
+}
+  
+.mat-toolbar {
+  position:sticky;
+  top: 0;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--mat-surface-container);
+}
+
+.mat-mdc-tab-body-content { overflow-x: hidden !important;}
+
+ul.no-bullet {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+  line-height: 1.6;
+}

@@ -1,84 +1,13 @@
 
 <mat-tab-group animationDuration="0ms">
     <mat-tab label="Placement Activity">        
-        <h1>Placement Activity</h1>
-        <div>
-            <div>
-                <mat-form-field>
-                    <mat-label>Authorized Person</mat-label>
-                    <mat-select>
-                    @for (authPerson of authPersons; track authPerson) {
-                        <mat-option [value]="authPerson">{{authPerson}}</mat-option>
-                    }                    
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div>
-                <label id="radio-group-label">Type of request</label>
-                <mat-radio-group
-                aria-labelledby="radio-group-label"
-                class="d-flex flex-column">
-                @for (authRequestType of authRequestTypes; track authRequestType) {
-                    <mat-radio-button class="radio-button" [value]="authRequestType">{{authRequestType}}</mat-radio-button>
-                }
-                </mat-radio-group>
-            </div>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Provider</mat-label>
-                <mat-select>
-                @for (authProvider of authProviders; track authProvider) {
-                    <mat-option [value]="authProvider">{{authProvider}}</mat-option>
-                }                    
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Provider Location</mat-label>
-                <mat-select>
-                @for (authProviderLocation of authProviderLocations; track authProviderLocation) {
-                    <mat-option [value]="authProviderLocation">{{authProviderLocation}}</mat-option>
-                }                    
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
-
-            <mat-form-field>
-                <mat-label>Number of service units</mat-label>
-                <input type="number" matInput>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>Start Date</mat-label>
-                <input matInput [matDatepicker]="authStartDate">
-                <mat-datepicker-toggle matIconSuffix [for]="authStartDate"></mat-datepicker-toggle>
-                <mat-datepicker #authStartDate></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label>End Date</mat-label>
-                <input matInput [matDatepicker]="authEndDate">
-                <mat-datepicker-toggle matIconSuffix [for]="authEndDate"></mat-datepicker-toggle>
-                <mat-datepicker #authEndDate></mat-datepicker>
-            </mat-form-field>
-        </div>        
-        <div>
-            <mat-form-field>
-                <mat-label>Notes</mat-label>
-                <textarea matInput></textarea>
-            </mat-form-field>
-        </div>
+        <app-activity />
     </mat-tab>
     <mat-tab label="Authorization">
-        <h1>Authorization</h1>
+        <app-authorization />
     </mat-tab>
     <mat-tab label="Adoption/Therapeutic">
-        <h1>Adoption/Therapeutic</h1>
+        <app-adoption />
     </mat-tab>
   </mat-tab-group>
 
