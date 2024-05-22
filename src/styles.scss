@@ -1,3 +1,5 @@
+@import './assets/css/vars.scss';
+
 $tfi-blue0: #000000;
 $tfi-blue10: #001e2f;
 $tfi-blue20: #0c344a;
@@ -59,10 +61,12 @@ $tfi-green5: #001416;
   --mat-surface: #F7F9FF;
   --mat-surface-variant: #DDE3EA;
   --mat-surface-container: #FFF;
+
 }
 html,
 body {
     margin: 0;
+    padding: 0;
     background-color: var(--mat-sidenav-content-background-color);
     background-color: var(--mat-surface-variant);
 
@@ -220,3 +224,4 @@ ul.no-bullet {
   padding: 0;
   line-height: 1.6;
 }
+

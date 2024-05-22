@@ -1,0 +1,21 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <app-navigation class="sticky-top"></app-navigation>
+    </mat-drawer>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="menu" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="bebas-neue-regular">TFI-ONE</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="heart icon">
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="share icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+    <main class="main">
+        <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-container>

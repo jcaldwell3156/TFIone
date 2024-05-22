@@ -1,0 +1,75 @@
+.bg {
+    background-image: url('../../assets/img/tfi-login.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 75%;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        background: linear-gradient(100deg, rgba(48, 74, 97, 0.917) 10%, rgba(48, 74, 97, 0.208) 60%);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: ' ';
+        z-index: 2;
+        backface-visibility: hidden;
+    }
+
+    .content {
+        position: relative;        
+        z-index: 3;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        div {
+            padding: 2em;
+
+            h1 { 
+                margin-top: 0;
+                margin-bottom: 0.2em;
+                color: var(--mat-sys-light-on-primary);
+            }
+            em { 
+                font-family: "Courgette", cursive;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 1.4rem;
+                margin-bottom: 1.4em; 
+                display: block;
+                color: var(--mat-sys-light-on-primary);
+            }
+            .mat-icon {
+                color: #DB5343;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .bg .content {
+        left: 10%;
+        max-width: 400px;
+    }
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+    width: 100%;
+    border-radius: 30px;
+    padding: 1.6em;
+    font-size: 1rem;
+}
+
+.vh-100 {
+    height: 100vh;
+}
