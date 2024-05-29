@@ -52,6 +52,18 @@
             .mat-icon {
                 color: #DB5343;
             }
+            a {
+                &:link, 
+                &:visited,
+                &:hover,
+                &:active {
+                    text-decoration: none;
+                    color: var(--mat-sys-light-on-primary);
+                }
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }
@@ -68,6 +80,7 @@
     border-radius: 30px;
     padding: 1.6em;
     font-size: 1rem;
+    margin-bottom: 1em;
 }
 
 .vh-100 {
