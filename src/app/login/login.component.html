@@ -12,8 +12,10 @@
                     <mat-label>Password</mat-label>
                     <input matInput type="password">
                 </mat-form-field>  
-                <button mat-raised-button color="accent" type="submit"><mat-icon>favorite</mat-icon> Login</button>
-                <a routerLink="/forgot-password">Forgot Password?</a>
+                <button mat-raised-button color="accent" type="submit"
+                (click)="openSnackBar()"
+                ><mat-icon>favorite</mat-icon> Login</button>                
+                <a class="d-block text-center" routerLink="/login/forgot-password"><small>Forgot Password?</small></a>                
             </div>
         </div>
     </div>

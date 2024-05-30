@@ -3,6 +3,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -13,5 +14,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  constructor(private _snackBar: MatSnackBar) {}
+
+  openSnackBar() {
+    this._snackBar.open('An error has occured', 'close', {
+      duration: 3000,
+      panelClass: ['bg-error'],
+      horizontalPosition: this.horizontalPosition,
+    });
+  }
 }

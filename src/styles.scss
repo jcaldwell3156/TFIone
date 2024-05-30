@@ -61,7 +61,7 @@ $tfi-green5: #001416;
   --mat-surface: #F7F9FF;
   --mat-surface-variant: #DDE3EA;
   --mat-surface-container: #FFF;
-
+  --mat-ref-error-error60: #fe5360;
 }
 html,
 body {
@@ -72,7 +72,7 @@ body {
     font-family: Roboto, Helvetica, Arial, sans-serif;
     
 }
-.ng-star-inserted { width: 100%;}
+/* .ng-star-inserted { width: 100%;} */
 
 .mat-drawer-container,
 .mat-drawer-content {
@@ -85,6 +85,12 @@ body {
   justify-content: space-between;
 }
 
+.bg-error {
+  &.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    background-color: var(--mat-ref-error-error60);
+    color: var(--mat-surface);
+  }
+}
 
 .mat-drawer-container {
     min-height: 100vh;
@@ -221,4 +227,3 @@ ul.no-bullet {
   padding: 0;
   line-height: 1.6;
 }
-
