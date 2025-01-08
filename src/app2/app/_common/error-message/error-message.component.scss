@@ -1,0 +1,11 @@
+img {
+    width: 176px; margin: 0 auto 1em;
+    transition: all .3s ease-in-out;
+    &:hover {
+        transform: rotate(10deg);
+    }
+}
+
+.text-center { text-align: center;}
+
+h1 { margin-bottom: 0.1em;}

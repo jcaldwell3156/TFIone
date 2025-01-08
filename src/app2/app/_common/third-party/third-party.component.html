@@ -1,0 +1,32 @@
+<form>
+    <div class="row gx-5">
+        <div class="col">
+                <mat-form-field hintLabel="Max 8 digits">
+                    <mat-label>Texas Agency RID</mat-label>
+                    <input [formControl]="texasRIDControl" matInput #input maxlength="8" placeholder="Ex. 99999999" (input)="onInput($event)" numbersOnly>
+                    <mat-hint align="end">{{value().length}}/8</mat-hint>
+                    @if (texasRIDControl.hasError('required') && !texasRIDControl.hasError('minlength')) {
+                        <mat-error>Texas Agency RID is required</mat-error>
+                    }
+                    @if (texasRIDControl.hasError('minlength') && !texasRIDControl.hasError('required')) {
+                        <mat-error>Needs to be 8 digits {{value().length}}/8</mat-error>
+                    }
+                </mat-form-field>
+        </div>
+        <div class="col">
+                <mat-form-field>
+                    <mat-label>Texas Vendor ID</mat-label>
+                    <input [formControl]="texasVIDControl" matInput>
+                    @if (texasRIDControl.hasError('required')) {
+                        <mat-error>Texas Vendor ID is required</mat-error>
+                    }
+                </mat-form-field>
+        </div>
+        <div class="">
+                <mat-form-field hintLabel="Typically auto generated">
+                    <mat-label>ECAP Agency ID</mat-label>
+                    <input [formControl]="ecapAgencyIDControl" matInput>
+                </mat-form-field>
+        </div>
+    </div>
+</form>

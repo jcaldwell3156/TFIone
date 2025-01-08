@@ -1,0 +1,60 @@
+<form [formGroup]="agencyProfileFormGroup">
+
+    <div class="d-flex flex-wrap">
+        <div class="me-auto">
+            <h1>Agency Profile</h1>
+        </div>
+        <div class="d-flex gap-1">
+            <button mat-flat-button *ngIf="isNewAgency" color="primary" class="mt-2" (click)="SaveAgency(false)">Save New</button>
+            <button mat-flat-button *ngIf="!isNewAgency" color="primary" class="mt-2" (click)="SaveAgency(true)">Edit</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4 col-xl-3">
+            <div class="container">
+                <div class="mb-3" *ngIf="isNewAgency">
+                    <app-error-message errorTitle="New Agency Profile" errorMessage="Complete the form to get started!"></app-error-message>
+                </div>
+                <div *ngIf="!isNewAgency">
+                    <h3>Agency</h3>
+                    <div class="agencytitle mb-3">
+                        {{agencyName}}
+                    </div>
+                    <hr class="mb-3">
+                    <div class="row mb-3">
+                        <div class="col d-flex flex-column">
+                            <ul class="no-bullet">
+                                <li><strong class="pe-4">Address</strong><span>{{addressShowcase.Street1}}</span></li>
+                                <li><strong class="pe-4">Address 2</strong><span>{{addressShowcase.Street2}}</span></li>
+                                <li><strong class="pe-4">City, State, Zip</strong><span>{{addressShowcase.City}}, {{addressShowcase.State}} {{addressShowcase.ZipCode}}</span></li>
+                                <li><strong class="pe-4">County</strong><span>{{blank}}</span></li>
+                                <li><strong class="pe-4">Phone</strong><span>(512) 218-4400</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-3">
+                <h3>Agency Staff</h3>
+                <tfi-staff-addition [parentFormGroup]="agencyProfileFormGroup" class="mb-3"></tfi-staff-addition>
+                
+                <div class="subtitle mb-3" *ngIf="!hideTexasControls">
+                    <hr class="mb-3">
+                    Third Party Services (TX agencies only)
+                </div>
+                <tfi-third-party *ngIf="!hideTexasControls" [parentFormGroup]="agencyProfileFormGroup"></tfi-third-party>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-8 col-xl-9">
+            <div class="container">
+                <mat-tab-group>
+                    <mat-tab label="Agency"><tfi-agencyform [isStandAlone]="false" (isTexas)="HideTexasControls($event)"></tfi-agencyform></mat-tab>
+                    <mat-tab label="Foster Homes">Here would be a list of Foster Homes!</mat-tab>
+                    <mat-tab label="Service Providers">Here would be a list of Service Providers!</mat-tab>
+                    <mat-tab label="Relative/Parental Homes">Here would be a list of Relative/Parental Homes!</mat-tab>
+                    <mat-tab label="Residential Facilities">Here would be a list of Residential Facilities!</mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</form>

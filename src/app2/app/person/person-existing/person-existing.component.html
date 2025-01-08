@@ -1,0 +1,53 @@
+<div class="d-flex align-content-center align-items-center">
+  <div class="me-auto"><h3>Exsiting People:</h3></div>
+  <div><a (click)="CloseTable()"><mat-icon fontIcon="close"></mat-icon></a></div>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0 mb-3">
+    <ng-container matColumnDef="FirstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let person"> {{person.FirstName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="LastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let person"> {{person.LastName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="PreferredName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Name</th>
+        <td mat-cell *matCellDef="let person"> {{person.PreferredName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DateOfBirth">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>DOB</th>
+        <td mat-cell *matCellDef="let person"> {{person.DateOfBirth.toLocaleDateString()}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Notes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
+        <td mat-cell *matCellDef="let person"> {{person.Notes}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: displayedColumns" (click)="onRowClick(myRowData)"
+    [class]="{'active' : myRowData == selectedRow}"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9">
+          <div class="p-5" *ngIf="!isLoading; else loading;">
+            <app-error-message errorTitle="No Data Found" errorMessage="Could not find existing person"></app-error-message>
+          </div>
+          <ng-template #loading>
+            <div class="p-5 d-flex flex-column justify-content-center align-items-center text-center">
+              <tfi-spinner></tfi-spinner>
+            </div>
+          </ng-template>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="selectedRow">   
+    <h3>You've selected:</h3>
+    <p>Person ID: <strong>{{selectedRow.ID}}</strong>, First Name: <strong>{{selectedRow.FirstName}}</strong>, LastName: <strong>{{selectedRow.LastName}}</strong>, and etc..</p>
+</div>

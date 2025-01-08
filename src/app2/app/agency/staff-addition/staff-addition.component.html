@@ -1,0 +1,27 @@
+<form>
+<mat-form-field class="example-full-width">
+    <mat-label>People of Note</mat-label>
+    <input type="text"
+           placeholder="Search Staff"
+           aria-label="Staff"
+           matInput
+           [formControl]="staffControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+      @for (staff of filteredStaff | async; track staff) {
+        <mat-option [value]="staff">{{staff.FirstName + ' ' + staff.LastName}}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+  @if (staffAlreadyAdded) {
+    <span style="color: #f44336; display: block; margin-bottom: 5px;">Staff already added</span>
+  }
+
+  <button mat-flat-button color="primary" (click)="AddStaff()" style="margin-top: 5px;">Add Staff</button>
+
+  <div style="margin-top: 25px;">
+    @for (staff of staffAdded; track staff) {
+        <app-staff-card [staffAdded] = staff (showID)="RemoveStaff($event)"></app-staff-card>
+      }
+  </div>
+</form>

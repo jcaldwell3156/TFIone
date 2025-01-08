@@ -1,0 +1,52 @@
+
+<div class="row">
+    <div class="col-xs-12 col-md-3 col-xl-2">
+        <div class="container mb-3">
+            <app-side-nav />
+        </div>
+    </div>    
+    <div class="col-xs-12 col-md-9 col-xl-10">
+        <div class="container">
+        <div class="d-flex justify-content-between">
+            <h1>Roles &amp; Permissions</h1>
+            <button mat-flat-button color="primary" class="mt-2">Save</button>
+        </div>            
+        <div class="table-responsive"> 
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+                <ng-container matColumnDef="permission" sticky>
+                    <th mat-header-cell *matHeaderCellDef> Permissions </th>
+                    <td mat-cell *matCellDef="let role">
+                        {{role.permission}} 
+                        <mat-icon 
+                            aria-hidden="false"
+                            matTooltip="{{role.description}}" 
+                            matTooltipPosition="right" 
+                            class="icon-info"
+                            color="primary"
+                            >info-outlined
+                        </mat-icon>
+                    </td>
+                </ng-container>                
+                <ng-container matColumnDef="agency">
+                    <th mat-header-cell *matHeaderCellDef> Agency </th>
+                    <td mat-cell *matCellDef="let role"><mat-checkbox checked="{{role.agency}}"></mat-checkbox></td>
+                </ng-container>
+                <ng-container matColumnDef="developer">
+                    <th mat-header-cell *matHeaderCellDef> Developer </th>
+                    <td mat-cell *matCellDef="let role"><mat-checkbox checked="{{role.developer}}"></mat-checkbox></td>
+                </ng-container>
+                <ng-container matColumnDef="supervisor">
+                    <th mat-header-cell *matHeaderCellDef> Supervisor </th>
+                    <td mat-cell *matCellDef="let role"><mat-checkbox checked="{{role.supervisor}}"></mat-checkbox></td>
+                </ng-container>
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef> User </th>
+                    <td mat-cell *matCellDef="let role"><mat-checkbox checked="{{role.user}}"></mat-checkbox></td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>       
+        </div>
+    </div>
+</div>

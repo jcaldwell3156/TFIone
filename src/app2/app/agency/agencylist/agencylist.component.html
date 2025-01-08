@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-xs-12 col-md-7 col-xl-8">
+        <div class="container mb-3">
+            <h1>Agencies</h1>
+            <!-- FILTERS -->
+            <div class="d-flex flex-column flex-lg-row flex-wrap">
+                <div class="me-lg-3 flex-fill">
+                    <mat-form-field>
+                        <mat-label>Filter</mat-label>
+                        <input matInput type="search" placeholder="ex- Agency name, ID, etc.." #filter (keyup)="applyFilter($event)">
+                    </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a [routerLink]="'/agency/profile/'"><button mat-flat-button color="primary" class="mt-2">Add new agency</button></a>
+                </div>
+            </div>
+
+            <!-- TABLE -->
+
+        <div class="table-responsive">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0">
+
+                <ng-container matColumnDef="AgencyID">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Agency ID </th>
+                    <td mat-cell *matCellDef="let agency">{{agency.AgencyID}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="AgencyName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Agency Name </th>
+                    <td mat-cell *matCellDef="let agency">{{agency.AgencyName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="State">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                    <td mat-cell *matCellDef="let agency">{{agency.State}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"                        
+                        (click)="onRowClick(row)"
+                        [class]="{'active' : row == selectedRow}">
+                </tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9">
+                      <div class="p-5">
+                        <app-error-message errorTitle="No Data Found" errorMessage="Try updating your search parameters"></app-error-message>
+                      </div>
+                    </td>
+                </tr>
+            </table>
+            <mat-paginator class="py-3" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>    
+        </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="col-xs-12 col-md-5 col-xl-4">
+        <div class="container">
+            @if (!selectedRow) {
+                <div class="d-flex flex-column align-items-center mb-3">
+                    <app-error-message errorTitle="No Selection" errorMessage="Select an agency to see details"></app-error-message>                  
+                </div> 
+            }
+            @if (selectedRow) {
+                <div class="d-flex flex-row align-items-center mb-3">
+                    <h1>{{selectedRow.AgencyDetail.AgencyName}}</h1>
+                </div>
+                <hr class="mb-3">
+                <ul class="no-bullet mb-2">
+                    <li><strong class="pe-2">Agency Date</strong><span>{{selectedRow.AgencyDetail.StartDate.toLocaleDateString()}}</span></li>
+                    <li><strong class="pe-2">Agency Type</strong> <span>{{selectedRow.AgencyType}}</span></li>
+                    <li><strong class="pe-2">Tax Number</strong> <span>{{selectedRow.AgencyDetail.TaxNumber}}</span></li>
+                    <li><strong class="pe-2">Agency State</strong> <span>{{selectedRow.State}}</span></li>
+                    <li><strong class="pe-2">Agency Contact</strong> <span>{{selectedRow.AgencyDetail.AgencyContact ? selectedRow.AgencyDetail.AgencyContact : 'N/A'}}</span></li>
+                    <li><strong class="pe-2">Placement Contact</strong> <span>{{selectedRow.AgencyDetail.PlacementContact ? selectedRow.AgencyDetail.PlacementContact : 'N/A'}}</span></li>
+                </ul>
+
+                <div>
+                    <a [routerLink]="'/agency/profile/' + selectedRow.AgencyID"><button mat-flat-button color="primary" class="mt-2">Go to profile</button></a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

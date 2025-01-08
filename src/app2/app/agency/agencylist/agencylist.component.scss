@@ -1,0 +1,15 @@
+h1 {
+    font-size: 40px;
+}
+
+.mat-mdc-row {
+    &.active {
+        background-color: var(--mat-ref-secondary-secondary90);    
+        opacity: 1;                   
+    }    
+    &:hover:not(.active) {
+        background-color: RGBA(var(--mat-ref-primary80-rgb),.15);    
+        opacity: 1;      
+        cursor: pointer;             
+    }    
+}

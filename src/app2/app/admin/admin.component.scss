@@ -1,0 +1,42 @@
+  
+  td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+  }
+  
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  
+  .mat-table-sticky:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .mat-table-sticky:last-child {
+    border-left: 1px solid #e0e0e0;
+  }
+
+  @mixin profile {
+    background-color: var(--mat-ref-secondary-secondary90);
+    color: var(--mat-sys-light-on-secondary-container);
+    border-radius: 30px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    padding: 3px;
+  }
+  img.profile {
+    @include profile;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+   
+  span.profile {
+    @include profile;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.8;
+  }

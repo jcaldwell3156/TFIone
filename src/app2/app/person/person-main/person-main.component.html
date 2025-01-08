@@ -1,0 +1,132 @@
+<form [formGroup]="personFormGroup">
+
+  <div class="container">
+    <div class="d-flex flex-column">
+      <div>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" placeholder="Ex. John" formControlName="firstName">
+          @if (firstName?.hasError('required')) {
+          <mat-error>First name is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Middle Name</mat-label>
+          <input matInput type="text" placeholder="Ex. A." formControlName="middleName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" placeholder="Ex. Doe" formControlName="lastName">
+          @if (lastName?.hasError('required')) {
+          <mat-error>Last name is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Preferred Name</mat-label>
+          <input matInput type="text" placeholder="Ex. Trey Doe" formControlName="preferredName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>SSN</mat-label>
+          <input matInput type="password" formControlName="ssn">
+        </mat-form-field>
+      </div>
+      <div>
+        <div class="d-flex flex-row">
+          <div>
+            <mat-form-field>
+              <mat-label>Honorific</mat-label>
+              <input matInput type="text" formControlName="honorific" placeholder="Ex. Jr, Sr, III">
+            </mat-form-field>
+          </div>
+          <div class="ms-3">
+            <mat-form-field>
+              <mat-label>Prefix</mat-label>
+              <mat-select formControlName="prefix">
+                @for (prefix of prefixes; track prefix) {
+                <mat-option [value]="prefix">{{prefix.Description}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="ms-3" style="width: 214px;">
+            <mat-form-field>
+              <mat-label>Birth Date</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" formControlName="dateOfBirth">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div>
+          <mat-form-field>
+            <mat-label>SAB</mat-label>
+            <mat-select formControlName="sexAssignmentDropDown">
+              @for (assignment of sexAssignments; track assignment) {
+              <mat-option [value]="assignment">{{assignment.Description}}</mat-option>
+              }
+            </mat-select>
+            @if (sexAssignmentDropDown?.hasError('required')) {
+            <mat-error>SAB is <strong>required</strong></mat-error>
+            }
+            <mat-hint>Sex Assigned at Birth</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="ms-3">
+          <mat-form-field>
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="genderDropDown">
+              @for (gender of genders; track gender) {
+              <mat-option [value]="gender">{{gender.Description}}</mat-option>
+              }
+            </mat-select>
+            @if (genderDropDown?.hasError('required')) {
+            <mat-error>Gender is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="ms-3">
+          <mat-form-field>
+            <mat-label>Pronoun</mat-label>
+            <mat-select formControlName="pronounDropDown">
+              @for (pronoun of pronouns; track pronoun) {
+              <mat-option [value]="pronoun">{{pronoun.Description}}</mat-option>
+              }
+            </mat-select>
+            @if (pronounDropDown?.hasError('required')) {
+            <mat-error>Pronoun is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <tfi-person-race [parentFormGroup]="personFormGroup"></tfi-person-race>
+      </div>
+    </div>
+    <div>
+      <tfi-person-existing *ngIf="checkExisting" (closeTable)="CloseExistingTable($event)" (sendPerson)="GetAndFillAllPersonControls($event)"></tfi-person-existing>
+    </div>
+    <div class="d-flex justify-content-start mb-3">
+      <div>
+        <button mat-flat-button color="primary" (click)="SaveNewPerson(false)" *ngIf="!this.personId">Save new</button>
+        <button mat-flat-button color="primary" (click)="SaveNewPerson(true)" *ngIf="this.personId">Edit</button>
+      </div>
+      <div *ngIf="!this.personId" class="ps-2">
+        <button mat-flat-button color="primary" (click)="GetExistingPeople()" *ngIf="!this.personId">Check existing</button>
+      </div>
+      <div *ngIf="isLoading">
+        <tfi-spinner></tfi-spinner>
+      </div>
+    </div>
+  </div>
+</form>

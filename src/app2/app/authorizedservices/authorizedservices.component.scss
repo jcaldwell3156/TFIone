@@ -1,0 +1,9 @@
+.add{ width: 1.5em; height: 1.5em;margin:.3em;}
+.remove{ width: 1em; height: 1em;margin:.3em; float: right;}
+.remove:hover,.add:hover{cursor:pointer;}
+
+div.authorizedServiceGroup{
+    border: 1px solid black;
+    border-radius: 1px;
+    margin: 1em;
+}

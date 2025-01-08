@@ -1,0 +1,132 @@
+
+<div class="row">   
+    <div class="col-xs-12 col-md-7 col-xl-8">
+        <div class="container mb-3">                                
+            <h1><small>Texas Gateway Provider</small>Discharge Notices</h1>
+            
+            <!-- FILTERS -->
+            <div class="d-flex flex-column flex-lg-row flex-wrap">
+                <div class="me-lg-3 flex-fill">                    
+                    <mat-form-field>
+                        <mat-label>Filter</mat-label>
+                        <input matInput type="search" placeholder="ex- name, ID, etc" (keyup)="applyFilter($event)" #filter>
+                    </mat-form-field>
+                </div>
+                <div class="me-lg-3 flex-fill">
+                    <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select [(value)]="defaultStatus" >   
+                            @for (dischargeStatus of dischargeStatuses; track dischargeStatus) {
+                                <mat-option [value]="dischargeStatus">{{dischargeStatus}}</mat-option>
+                            }             
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="flex-fill">
+                    <mat-form-field>
+                        <mat-label>Discharge Reason</mat-label>
+                        <mat-select>
+                        @for (dischargeReason of dischargeReasons; track dischargeReason) {
+                            <mat-option [value]="dischargeReason">{{dischargeReason}}</mat-option>
+                        }                    
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div> 
+
+            <!-- TABLE -->
+            <div class="table-responsive"> 
+                <table mat-table                 
+                    [dataSource]="dataSource" matSort
+                    class="mat-elevation-z0">    
+
+                    <ng-container matColumnDef="stateRef">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> State Reference </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.stateRef}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="lastname">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Child Name </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.lastname}}, {{discharge.firstname}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="subDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Submission Date </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.subDate}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="CPA">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> CPA </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.CPA}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="resource">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Resource </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.resource}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="region">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Region </th>
+                        <td mat-cell *matCellDef="let discharge">{{discharge.region}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"                        
+                        (click)="onRowClick(row)"
+                        [class]="{'active' : row == selectedRow}">
+                    </tr>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="9">
+                          <div class="p-5">
+                            <app-error-message errorTitle="No Data Found" errorMessage="Try updating your search parameters"></app-error-message>
+                          </div>
+                        </td>
+                    </tr>
+                </table>   
+                <mat-paginator class="py-3" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>    
+            </div>
+        </div>
+    </div>    
+
+    <div class="col-xs-12 col-md-5 col-xl-4">
+        <div class="container">  
+            @if (!selectedRow) {
+                <div class="d-flex flex-column align-items-center mb-3">
+                    <app-error-message errorTitle="No Selection" errorMessage="Select a discharge notice to see details"></app-error-message>                  
+                </div> 
+            }        
+            @if (selectedRow) {
+                <article>                
+                    <div class="profile d-flex flex-row align-items-center">
+                        <ng-container *ngIf="selectedRow.image; else noImg">
+                            <img class="image me-3" [src]="selectedRow.image" alt={{selectedRow.name}} />
+                        </ng-container>                
+                        <ng-template #noImg>
+                            <mat-icon class="initials me-3" color="primary" title="missing profile image">face</mat-icon>
+                        </ng-template>        
+                        <div>
+                            <h1 class="mb-1">{{selectedRow.firstname}} {{selectedRow.lastname}}</h1>    
+                            <h2><span title="State Reference Number">{{selectedRow.stateRef}}</span></h2>
+                        </div>
+                    </div>    
+                    <ul class="no-bullet">                  
+                        <li>Submission Date <span>{{selectedRow.subDate}}</span></li>                   
+                        <li>Submitted by <span>{{selectedRow.subBy}}</span></li>                    
+                        <li>CPA Name <span>{{selectedRow.CPA}}</span></li>                    
+                        <li>Resource Name <span>{{selectedRow.resource}}</span></li>                    
+                        <li>Region <span>{{selectedRow.region}}</span></li>                    
+                        <li>Discharge Type <span>{{selectedRow.disType}}</span></li>                    
+                        <li>Reasons <span>{{selectedRow.reasons}}</span></li>                    
+                    </ul>
+                    <hr />
+                    <ul class="no-bullet mb-0">
+                        <li>Mitigation <span>{{selectedRow.mitigation}}</span></li>                    
+                        <li>Recommendations <span class="scrollable">{{selectedRow.recommendations}}</span></li>
+                    </ul>
+                    <div>
+                        <mat-radio-group>
+                            <mat-radio-button value="Accept" checked>Accept</mat-radio-button>
+                            <mat-radio-button value="Reject">Reject</mat-radio-button>
+                        </mat-radio-group>
+                        <button mat-flat-button color="primary" class="mt-2">Save</button>
+                    </div>
+                </article>   
+            }
+        </div>
+    </div>
+</div>

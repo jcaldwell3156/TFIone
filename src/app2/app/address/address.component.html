@@ -1,0 +1,48 @@
+<form [formGroup]="address" (ngSubmit)="onSubmit()">
+      <div class="address">
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Address" formControlName="Street1" />
+              <mat-error *ngIf="Street1.invalid&&(Street1.touched||Street1.dirty)">Please Enter a Valid
+                Street Address</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Address 2</mat-label>
+              <input matInput placeholder="Optional Address" formControlName="Street2" />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" formControlName="City" />
+                <mat-error *ngIf="City.invalid&&(City.touched||City.dirty)">Please Enter a Valid City</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label>State</mat-label>
+                <mat-select placeholder="State/Region" formControlName="State">
+                  <mat-option value="" disabled selected>Select A State</mat-option>
+                  <mat-option *ngFor="let usstates of usStatesSelectList"
+                    [value]="usstates.value">{{usstates.title}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="State.invalid&&(State.touched||State.dirty)">Please Enter a State</mat-error>
+              </mat-form-field>
+              
+            </div>
+            <div class="col">
+              <mat-form-field>
+                <mat-label>ZipCode</mat-label>
+                <input type="number" matInput formControlName="ZipCode" placeholder="Zip/Postal Code" />
+                <mat-error *ngIf="Zip.invalid&&(Zip.touched||Zip.dirty)">Please Enter a Valid Postal Code
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>

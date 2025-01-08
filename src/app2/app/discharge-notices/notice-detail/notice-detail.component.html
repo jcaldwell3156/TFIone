@@ -1,0 +1,26 @@
+<div *ngIf="discharge === undefined" class="d-flex flex-column align-items-center mb-3">
+    <app-error-message errorTitle="No Selection" errorMessage="Select a discharge notice to see details"></app-error-message>                  
+</div> 
+<article *ngIf="discharge != undefined">
+    <mat-radio-group>
+        <mat-radio-button value="Accept" checked>Accept</mat-radio-button>
+        <mat-radio-button value="Reject">Reject</mat-radio-button>
+    </mat-radio-group>
+    <button mat-flat-button color="primary" class="mt-2">Save</button>
+    <ul class="no-bullet">
+        <li>Discharge ID <span>{{discharge.id}}</span></li>                                      
+        <li>State Reference <span>{{discharge.stateRef}} ({{discharge.name}})</span></li>                    
+        <li>Submission Date <span>{{discharge.subDate}}</span></li>                   
+        <li>Submitted by <span>{{discharge.subBy}}</span></li>                    
+        <li>CPA Name <span>{{discharge.CPA}}</span></li>                    
+        <li>Resource Name <span>{{discharge.resource}}</span></li>                    
+        <li>Region <span>{{discharge.region}}</span></li>                    
+        <li>Discharge Type <span>{{discharge.disType}}</span></li>                    
+        <li>Reasons <span>{{discharge.reasons}}</span></li>                    
+    </ul>
+    <hr />
+    <ul class="no-bullet mb-0">
+        <li>Mitigation <span>{{discharge.mitigation}}</span></li>                    
+        <li>Recommendations <span class="scrollable">{{discharge.recommendations}}</span></li>
+    </ul>
+</article>

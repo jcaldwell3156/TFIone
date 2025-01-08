@@ -1,0 +1,109 @@
+<mat-drawer-container class="container" autosize hasBackdrop="true">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="icon" aria-label="menu" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="bebas-neue-regular">TFI-ONE</span>
+      <span class="spacer"></span>
+      
+      <ul class="nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Families
+          </a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="">Kids</a></li>
+              <li><a href="">ASAP Families</a></li>                
+              <li><a href="">Exceptions</a></li>
+              <li><a href="">Recruited Families</a></li>
+            </ul>
+            <ul>
+              <li><a href="">Supervisor Monthly Case Review</a></li>
+              <li><a href="">Assessment</a></li>
+              <li><a href="">Child Placement Assessment</a></li>
+            </ul>    
+            <ul>
+              <li><a href="">Foster Family</a></li>
+              <li><a href="">User Registration</a></li>
+              <li><a href="">Home Requirements</a></li>
+              <li><a href="">Home Notifications</a></li>
+            </ul>
+            <ul>
+              <li><a href="">Safety Plans</a></li>
+              <li><a href="">ECAP Placement Changes</a></li>
+              <li><a href="">Provider Care Match Changes</a></li>
+            </ul>            
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Operations
+          </a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="">Tasks Data Entry</a></li>
+              <li><a href="">Staff</a></li>
+              <li><a href="">Office</a></li>
+              <li><a href="">Session Notes</a></li>
+              <li><a href="">Scanned Documents</a></li>
+            </ul>
+            <ul>
+              <li><a href="">Logs</a></li>
+              <li><a href="">Scans</a></li>
+              <li><a href="">Training</a></li>
+              <li><a href="">Auth Requests</a></li>
+            </ul>
+            <ul>
+              <li><a href="">Add Person</a></li>
+              <li><a href="">Add Provider</a></li>
+              <li><a href="">Add School/District</a></li>
+              <li><a href="">Add Agency</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Medical
+          </a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="">Medical Visits</a>                
+              <li><a href="">Allergies</a></li>
+              <li><a href="">Criticals and Serious Incidents</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Legal
+          </a>
+          <div class="dropdown-menu">
+            <ul>
+              <li><a href="">Court Cases</a></li>  
+              <li><a href="">Document Center</a></li>
+              <li><a href="">Criticals and Serious Incidents</a></li>
+              <li><a href="">License Renewals</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item"><a href="">Reports</a></li>
+        <li class="nav-item"><a href="">Admin</a></li>
+      </ul>
+      <span class="spacer"></span>
+      
+      <button mat-icon-button class="icon" aria-label="profile" (click)="profile.toggle()">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    
+    <mat-drawer #drawer class="sidenav" mode="push">
+      <app-navigation class="sticky-top" (click)="drawer.toggle()"></app-navigation>
+    </mat-drawer>
+    <mat-drawer #profile position="end" class="sidenav" mode="push">
+      <tfi-user-profile class="vh100" (click)="profile.toggle()"></tfi-user-profile>      
+    </mat-drawer>
+  </mat-drawer-container>

@@ -1,0 +1,28 @@
+<div class="d-flex flex-column justify-content-between p-3 h100">
+    <div class="flex-fill">
+        <div class="profile d-flex flex-row">
+            <!-- <ng-container *ngIf="selectedRow.image; else noImg">
+                <img class="image me-3" [src]="" alt="" />
+            </ng-container>                 -->
+            <ng-template #noImg>
+                <mat-icon class="initials me-3" color="primary" title="missing profile image">face</mat-icon>
+            </ng-template>        
+            <div>
+                <h2 class="mb-1">John Caldwell</h2>    
+                <h3><span title="Employee Role">UX Designer</span></h3>                
+                <mat-list role="list" class="no-bullet">
+                    <mat-list-item role="listitem" routerLink="/admin/user-profile/">View Profile</mat-list-item>
+                    <mat-list-item *ngIf="!checkLogin" role="listitem" routerLink="/login">Log Out</mat-list-item>
+                    <mat-list-item role="listitem">Change User</mat-list-item>
+                </mat-list>
+            </div>
+        </div>    
+
+    </div>
+    <ul class="no-bullet">                  
+        <li>Version: <span>1.1 (MM/DD/YYYY)</span></li>                   
+        <li>Build: <span>ac7add3b.1</span></li>             
+        <li>Host: <span>ACCEPTANCE</span></li>    
+        <li>Database: <span>sql-acceptance.agency.local</span></li>   
+    </ul>
+</div>

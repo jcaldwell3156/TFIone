@@ -1,0 +1,75 @@
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-10 col-xl-8 col-xxl-7">
+        <div class="container">            
+            <article>
+                <div class="d-flex align-items-center mb-4">                    
+                    <button mat-icon-button class="icon me-2" routerLink="/admin" aria-hidden="false" aria-label="Back to Admin">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
+                    <div class="profile d-flex flex-row align-items-center">
+                        <ng-container *ngIf="user?.image; else initials">
+                            <img class="image me-3" [src]="user?.image" alt={{user?.username}} />
+                        </ng-container>                
+                        <ng-template #initials>
+                            <span class="initials me-3">{{ getInitials(user?.username!) }}</span>
+                        </ng-template>        
+                        <div>
+                            <h1 class="mb-1">{{user?.username}}</h1>    
+                            <h2>{{user?.title}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 offset-md-1 col-md-5 col-xl-4">
+                        <div class="mb-0">
+                            <ul class="no-bullet">
+                                <li><strong>Department:</strong> {{user?.dept}}</li>
+                                <li><strong>Supervisor:</strong> {{user?.supervisor}}</li>
+                                <li><strong>Location:</strong> {{user?.location}}</li>
+                                <li><strong>Type:</strong> {{user?.type}}</li>
+                            </ul>
+                        </div>                    
+                    </div>                
+                    <div class="col-xs-12 col-md-6 col-xl-6">
+                        <div class="mb-3">
+                            <label class="me-2"><strong>Status</strong></label>
+                            <mat-radio-group>
+                                <mat-radio-button value="Active" checked>Active</mat-radio-button>
+                                <mat-radio-button value="Inactive">Inactive</mat-radio-button>
+                            </mat-radio-group>
+                        </div>                    
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Roles</mat-label>
+                                <mat-select multiple>
+                                    <mat-option [value]="user?.role" defaultValue>{{user?.role}}</mat-option>                        
+                                    <mat-option value="Admin">Admin</mat-option>
+                                    <mat-option value="Supervisor">Supervisor</mat-option>                   
+                                    <mat-option value="User">User</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>                    
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Department</mat-label>
+                                <mat-select>
+                                    <mat-option [value]="user?.dept" defaultValue>{{user?.dept}}</mat-option>                        
+                                    <mat-option value="Software">Software</mat-option>
+                                    <mat-option value="Permanancy">Permanancy</mat-option>
+                                    <mat-option value="Foster Care Worker">Foster Care Worker</mat-option>                   
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Title</mat-label>
+                                <input matInput placeholder="Title" [value]="user?.title">
+                            </mat-form-field>
+                        </div>   
+                        <button mat-flat-button color="primary">Save</button>                     
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

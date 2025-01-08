@@ -1,0 +1,122 @@
+<h2>Placement Activity</h2>
+<ul class="no-bullet">
+    <li><strong>Foster Care Worker:</strong> Calista Case (FSW)</li>
+    <li><strong>Last Modified by:</strong> Ted Nugent on Sept 29, 2023</li>
+    <li><strong>Created by:</strong> Jimmy Buffet on Aug 09, 2023</li>
+</ul> 
+<div class="row gx-5">
+    <div class="col-12 col-lg-6">
+        <h3>Placement</h3>
+        <div class="row">
+            <div class="col-12 col-xl-6">
+                <mat-form-field>
+                    <mat-label>Placement Date</mat-label>
+                    <input matInput [matDatepicker]="placementDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="placementDate"></mat-datepicker-toggle>
+                    <mat-datepicker #placementDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-xl-6">
+                <mat-form-field>
+                    <mat-label>Discharge Date</mat-label>
+                    <input matInput [matDatepicker]="dischargeDate">
+                    <mat-datepicker-toggle matIconSuffix [for]="dischargeDate"></mat-datepicker-toggle>
+                    <mat-datepicker #dischargeDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Discharge Reason</mat-label>
+                <mat-select>
+                @for (dischargeReason of dischargeReasons; track dischargeReason) {
+                    <mat-option [value]="dischargeReason">{{dischargeReason}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Intake Specialist</mat-label>
+                <mat-select>
+                @for (intakeSpecialist of intakeSpecialists; track intakeSpecialist) {
+                    <mat-option [value]="intakeSpecialist">{{intakeSpecialist}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Placement Identified</mat-label>
+                <input matInput [matDatepicker]="placementIdentified">
+                <mat-datepicker-toggle matIconSuffix [for]="placementIdentified"></mat-datepicker-toggle>
+                <mat-datepicker #placementIdentified></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Notes</mat-label>
+                <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Scripts</mat-label>
+                <input type="type" matInput>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <h3>Provider</h3>
+        <div>
+            <mat-form-field>
+                <mat-label>Provider</mat-label>
+                <mat-select>
+                @for (provider of providers; track provider) {
+                    <mat-option [value]="provider">{{provider}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Provider Location</mat-label>
+                <mat-select>
+                @for (providerLocation of providerLocations; track providerLocation) {
+                    <mat-option [value]="providerLocation">{{providerLocation}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Provider Service</mat-label>
+                <mat-select>
+                @for (providerService of providerServices; track providerService) {
+                    <mat-option [value]="providerService">{{providerService}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Fame Code</mat-label>
+                <mat-select>
+                @for (fameCode of fameCodes; track fameCode) {
+                    <mat-option [value]="fameCode">{{fameCode}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Activity Reason</mat-label>
+                <mat-select>
+                @for (activityReason of activityReasons; track activityReason) {
+                    <mat-option [value]="activityReason">{{activityReason}}</mat-option>
+                }                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

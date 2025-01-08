@@ -1,0 +1,16 @@
+.training {
+    div { 
+            padding: 1em;
+    } 
+    div:nth-child(odd) {
+        background-color: #EEF1F6;
+    }
+    ul { margin-bottom: 0;}
+
+    height: 300px;
+    overflow-y: auto;
+}
+
+.mat-column-select {
+    overflow: initial;
+  }

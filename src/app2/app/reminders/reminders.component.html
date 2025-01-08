@@ -1,0 +1,39 @@
+
+    <div class="row">
+        <div class="col-12 col-md-4 col-xl-2">
+            <div class="container mb-4">
+                <mat-list role="list">
+                    <mat-list-item role="listitem">Item 1</mat-list-item>
+                    <mat-list-item role="listitem">Item 2</mat-list-item>
+                    <mat-list-item role="listitem">Item 3</mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 col-xl-10">
+            <div class="container">
+                <div *ngIf="remindersList.length > 0" class="d-flex flex-column flex-sm-row justify-content-between">
+                    <h2 class="mb-3 text-center text-sm-start">Reminders</h2>
+                    <div class="mx-auto ms-sm-auto me-sm-0">
+                        <button mat-stroked-button color="primary">Mark Complete</button>
+                    </div>
+                </div>
+                <mat-selection-list #reminders>
+                    @for (reminder of remindersList; track reminder) {
+                      <mat-list-option>{{reminder}}</mat-list-option>
+                    }
+                </mat-selection-list>   
+                <div *ngIf="remindersList.length === 0" class="d-flex flex-column align-items-center mb-3">
+                    <app-error-message class="mb-3" errorTitle="Hey, no reminders!" errorMessage="Create a reminder to get started."></app-error-message>
+                </div>
+                <div class="d-flex flex-column flex-sm-row mt-3 mt-md-0">
+                    <mat-form-field>
+                        <mat-label>Add a reminder</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <div class="mt-sm-2 ms-sm-3 mx-auto">
+                        <button mat-flat-button color="primary">Add Reminder</button>
+                    </div>
+                </div>             
+            </div>
+        </div>
+    </div>

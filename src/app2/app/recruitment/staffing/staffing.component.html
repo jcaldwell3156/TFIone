@@ -1,0 +1,32 @@
+<h2>Assigned Staffing</h2>
+
+<div>
+    <mat-form-field>
+        <mat-label>Prep Specialist</mat-label>
+        <mat-select>
+        @for (staffingPerson of staffingPersons; track staffingPerson) {
+            <mat-option [value]="staffingPerson">{{staffingPerson}}</mat-option>
+        }                    
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Foster Care Worker</mat-label>
+        <mat-select>
+        @for (staffingPerson of staffingPersons; track staffingPerson) {
+            <mat-option [value]="staffingPerson">{{staffingPerson}}</mat-option>
+        }                    
+        </mat-select>
+    </mat-form-field>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Adoption Specialist</mat-label>
+        <mat-select>
+        @for (staffingPerson of staffingPersons; track staffingPerson) {
+            <mat-option [value]="staffingPerson">{{staffingPerson}}</mat-option>
+        }                    
+        </mat-select>
+    </mat-form-field>
+</div>

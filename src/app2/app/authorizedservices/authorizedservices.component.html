@@ -1,0 +1,57 @@
+<div [formGroup]="form">
+  <div>
+    <img src="../../assets/img/blue-plus-icon-6.png" class="add" (click)="addAServiceToAgency()" />
+    Agency: {{AgencyName}} 
+  </div>
+  <div formArrayName="authorizedServices">
+    <div class="authorizedServiceGroup" *ngFor="let authorizedService of form.controls.authorizedServices.controls; let i = index" [formGroupName]="i">
+      <div>
+        <img src="../../assets/img/delete.png" class="remove" (click)="removeAServiceToAgency(i)" />
+      </div>
+      <mat-form-field>
+        <mat-label>Service Type:</mat-label>
+        <mat-select formControlName="ServiceType">
+            <mat-option value="" disabled selected>Select A Service Type</mat-option>
+            <mat-option *ngFor="let servicetypes of ServiceTypeList"
+            [value]="servicetypes.value">{{servicetypes.title}}</mat-option>
+        
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Procedure:</mat-label>
+        <mat-select formControlName="ProcedureCode">
+            <mat-option value="" disabled selected>Select A Procedure Code</mat-option>
+            <mat-option *ngFor="let procedurecodes of ProcedureCodeList"
+            [value]="procedurecodes.value">{{procedurecodes.title}}</mat-option>
+        
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Unit Type:</mat-label>
+        <mat-select formControlName="UnitType">
+            <mat-option value="" disabled selected>Select A Unit Type</mat-option>
+            <mat-option *ngFor="let unittypes of UnitTypeList"
+            [value]="unittypes.value">{{unittypes.title}}</mat-option>
+        
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Service Begin Date:</mat-label>
+         <input matInput formControlName="begin" placeholder="Begin date" [matDatepicker]="beginDatePicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="beginDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #beginDatePicker> </mat-datepicker>
+       </mat-form-field>
+       <mat-form-field>
+        <mat-label>Service End Date:</mat-label>
+         <input matInput formControlName="end" placeholder="End date" [matDatepicker]="endDatePicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker> </mat-datepicker>
+       </mat-form-field>
+       <mat-checkbox color="primary" formControlName="sendToAllProviders">Downloads allowed
+      </mat-checkbox>
+      <!-- </ng-container> -->
+       </div>
+      </div>
+</div>

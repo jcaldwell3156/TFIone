@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between">    
+    <h2>Training</h2>    
+    <button mat-flat-button color="secondary" class="mb-2" (click)="openDialog('250ms', '250ms')">Edit Training</button>
+</div>
+<div>
+    <mat-form-field>
+        <mat-label>Sort by</mat-label>
+        <mat-select [(value)]="defaultSort">
+        @for (trainingSort of trainingSorts; track trainingSort) {
+            <mat-option [value]="trainingSort">{{trainingSort}}</mat-option>
+        }                    
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="training scrollable">
+    <div>
+        <a href="#">24413 - Texas Family Initiative (Pre-Service Training - Texas; Moore, Zipp</a>
+        <ul class="no-bullet">
+            <li><strong>Location:</strong> Fuller Residence</li>
+            <li><strong>Trainers:</strong> Chantel Grant, Tammy Palmer</li>
+            <li><strong>Dates:</strong> Oct 22 2024 6:00 PM - Oct 22 2024 8:00 PM</li>
+        </ul>
+    </div>
+    <div>
+        <a href="#">24413 - Texas Family Initiative (Pre-Service Training - Texas; Moore, Zipp</a>
+        <ul class="no-bullet">
+            <li><strong>Location:</strong> Fuller Residence</li>
+            <li><strong>Trainers:</strong> Chantel Grant, Tammy Palmer</li>
+            <li><strong>Dates:</strong> Oct 22 2024 6:00 PM - Oct 22 2024 8:00 PM</li>
+        </ul>
+    </div>
+    <div>
+        <a href="#">24413 - Texas Family Initiative (Pre-Service Training - Texas; Moore, Zipp</a>
+        <ul class="no-bullet">
+            <li><strong>Location:</strong> Fuller Residence</li>
+            <li><strong>Trainers:</strong> Chantel Grant, Tammy Palmer</li>
+            <li><strong>Dates:</strong> Oct 22 2024 6:00 PM - Oct 22 2024 8:00 PM</li>
+        </ul>
+    </div>
+</div>

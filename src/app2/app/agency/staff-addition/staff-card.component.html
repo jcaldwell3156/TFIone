@@ -1,0 +1,17 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <div class="row d-flex align-items-center">
+      <div class="col-4">
+        {{ staffAdded.FirstName + " " + staffAdded.LastName }} 
+      </div>
+      <div class="col">
+        <strong style="padding-left: 10px">QI Assigned</strong>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button mat-mini-fab aria-label="Delete Staff" (click)="SendBackStaffID()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

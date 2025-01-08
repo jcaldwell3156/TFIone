@@ -1,0 +1,122 @@
+.kiddos {
+
+    .mat-mdc-list-item-icon img {
+        background-color: var(--mat-ref-secondary-secondary90);
+        color: var(--mat-sys-light-on-secondary-container);
+        border-radius: 80px;
+        display: inline-block;
+        overflow: hidden;
+        padding: 2px;
+    }
+    .mdc-list-item.mdc-list-item--with-two-lines .mdc-list-item__start {
+        margin-top: 10px;
+        margin-right: 40px;
+        margin-left: 0;
+    }
+    
+    .mdc-list-item--with-leading-icon.mdc-list-item {
+        padding-left: .5em;
+        &.active {
+            background-color: var(--mat-ref-secondary-secondary90);
+
+            .initials {
+                background-color: #FFF;
+            }
+        }
+    }
+}
+
+
+// .profile img { 
+//     width: 60px !important;
+//     background-color: var(--mat-ref-secondary-secondary90) !important;
+//     padding: 5px !important;
+// }
+
+.vh100 { min-height: calc(100vh - 180px);}
+// .card { background-color: #FFF; padding: 1em; box-shadow: 1px 1px 1px #e0e0e0;}
+
+.border-end {
+    border-bottom: solid 1px #e0e0e0;
+}
+@media (min-width: 768px) {  
+    .border-end {
+        border-bottom: none;
+        border-right: solid 1px #e0e0e0;
+    }
+}
+
+.scrollable {
+    max-height: calc(100vh - 450px);
+}
+
+@mixin profile {
+    background-color: rgb(var(--mat-ref-primary80-rgb));
+    color: var(--mat-sys-light-on-secondary-container);
+    border-radius: 80px;
+    display: inline-block;
+    overflow: hidden;    
+    padding: 2px;
+    margin: 0;    
+    width: 50px;
+    height: 50px;
+}
+.profile {
+    h1 { font-size: 1.6em;}
+    h2 { font-size: 1.4em; margin-bottom: .25em;}
+    @media (min-width: 768px) {
+      h1 { font-size: 2.4em;}
+      h2 { font-size: 1.8em; margin-bottom: .25em;}
+    }
+    img {
+      @include profile;
+    }
+    .initials {
+      @include profile;
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      font-size: 1.5em;
+      line-height: 1.4;
+    }
+}
+
+h6 { margin-left: .3em;}
+
+ul.no-bullet {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: solid 1px #e0e0e0;
+
+    &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    li {
+        margin-bottom: 0.2em;
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: .2em .4em;
+            border-radius: 2px;
+            font-weight: normal;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        
+            &.active {
+                color: black;
+                background-color: var(--mat-ref-secondary-secondary90);
+
+                &:hover {
+                    text-decoration: none;
+                    cursor: default;
+                }
+            }
+        }
+    }
+}

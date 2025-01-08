@@ -1,0 +1,26 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+<form [formGroup]="loginForm" (ngSubmit)="OnLogin()">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="login bg">
+            <div class="content">
+                <div>
+                    <h1 class="bebas-neue-regular">TFI-ONE</h1>
+                    <em>Devoted to the strength of family</em>
+                    <tfi-textboxemail appearanceName="fill" [parentFormGroup]="loginForm"/>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password">
+                        <mat-error *ngIf="password && password.invalid && (password.touched || isSubmitted || password.dirty)">Please provide a valid password</mat-error>
+                    </mat-form-field>
+                    <!-- <h3 style="color: white;">{{errorMessage}}</h3> -->
+                    <button class="mt-2" mat-raised-button color="accent" type="submit"><mat-icon>favorite</mat-icon> Login</button>
+                    <a class="d-block text-center" routerLink="/login/forgot-password"><small>Forgot Password?</small></a>
+                </div>                
+                <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+            </div>
+        </div>
+    </div>
+</form>

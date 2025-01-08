@@ -1,0 +1,15 @@
+<mat-form-field [appearance]="appearanceName" class="mb-2">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      placeholder="Ex. my@example.com"
+      [formControl]="emailFormControl"
+    />
+    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error style="color: white;">Please enter a valid email address</mat-error>
+        }
+    @if (emailFormControl.hasError('required')) {
+        <mat-error style="color: white;">Email is required</mat-error>
+        }
+  </mat-form-field>

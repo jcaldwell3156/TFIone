@@ -1,0 +1,142 @@
+<div class="container vh100">
+    <div class="row align-items-stretch vh100">
+        <div class="col-12 col-md-3 col-xl-2 border-end">
+            <h2>Kids</h2>
+            <div *ngIf="selectedId == 0">
+                <mat-form-field subscriptSizing="dynamic" class="mb-3">
+                    <mat-label>Assigned to</mat-label>
+                    
+                    <mat-select [formControl]="assigned" [(value)]="defaultAssigned" multiple>   
+                        @for (assignedTo of assignedTos; track assignedTo) {
+                            <mat-option [value]="assignedTo">{{assignedTo}}</mat-option>
+                        }             
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field subscriptSizing="dynamic" class="mb-3">
+                    <mat-label>Sort by</mat-label>                
+                    <mat-select [(value)]="defaultSort">   
+                        @for (sortBy of sortBys; track sortBy) {
+                            <mat-option [value]="sortBy">{{sortBy}}</mat-option>
+                        }             
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field subscriptSizing="dynamic" class="mb-3">
+                    <mat-label>Filter</mat-label>
+                    <input matInput placeholder="Child name, DOB" #input>
+                </mat-form-field>
+                <div class="scrollable">
+                    <mat-nav-list class="kiddos profile">
+                    @for (kid of kiddos; track kid) {                    
+                        <a mat-list-item routerLink="/kids/{{kid.id}}" routerLinkActive="active">
+                            <span matListItemIcon *ngIf="kid.img; else noImg">                            
+                                <img [src]="kid.img" alt={{kid.firstname}}>
+                            </span>  
+                            <ng-template #noImg>
+                                <span matListItemIcon>
+                                    <mat-icon class="initials me-3" color="primary" title="missing profile image">face</mat-icon>
+                                </span> 
+                            </ng-template>              
+                        
+                            <span matListItemTitle>{{kid.firstname}} {{kid.lastname}}</span>
+                            <span matListItemLine>DOB {{kid.DOB | date}}</span>                    
+                        </a>
+                    }
+                    </mat-nav-list>                   
+                </div>            
+            </div>
+            <div *ngIf="selectedId !== 0">
+                <div class="profile d-flex flex-row align-items-center mb-3">
+                    <ng-container *ngIf="selectedId; else noImg">
+                        <img class="image me-3" src="../../assets/img/kiddos/v3_0087053.jpg" alt={{selectedId}} />
+                    </ng-container>                 
+                    <ng-template #noImg>
+                        <mat-icon class="initials me-3" color="primary" title="missing profile image">face</mat-icon>
+                    </ng-template>        
+                    
+                    <h2>firstname lastname</h2>    
+                </div>
+                <div>                    
+                
+                    <ul class="no-bullet">
+                        <li><strong>DOB:</strong> Jan 1, 2020</li>
+                        <li><strong>State Ref:</strong> 00065432</li>
+                        <li><strong>Case Manager:</strong> John Smith</li>
+                        <li><strong>Placement Type:</strong> FFH - Basic 1</li>
+
+                    </ul>
+                    <!-- IF (UNSAVED CHANGES == FALSE) -->
+                    <a href="/kids">Back to search</a>                        
+                    <!-- ELSE IF (UNSAVED CHANGES == TRUE) Throw a warning alert. "You have unsaved changes. Are you sure you dont want to save your changes?  -->                    
+                </div>    
+            </div>
+        </div>
+        
+        <div *ngIf="selectedId !== 0" class="col-12 col-md-3 col-xl-2 border-end">  
+            <div class="card">
+                <h6>Common</h6>
+                <ul class="no-bullet">
+                    @for (link of navLinksCommon; track link) {
+                        <li>
+                        <a 
+                            [routerLink]="link.path" 
+                            routerLinkActive="active"
+                            >{{ link.label }}</a>
+                        </li>
+                    }
+                </ul>
+                <h6>Medical</h6>
+                <ul class="no-bullet">
+                    @for (link of navLinksMedical; track link) {
+                        <li>
+                        <a 
+                            [routerLink]="link.path" 
+                            routerLinkActive #rla="routerLinkActive"
+                            >{{ link.label }}</a>
+                        </li>
+                    }
+                </ul>
+                <h6>Legal</h6>
+                <ul class="no-bullet">
+                    @for (link of navLinksLegal; track link) {
+                        <li>
+                        <a 
+                            [routerLink]="link.path" 
+                            routerLinkActive #rla="routerLinkActive"
+                            >{{ link.label }}</a>
+                        </li>
+                    }
+                </ul>
+                <h6>Services</h6>
+                <ul class="no-bullet">
+                    @for (link of navLinksServices; track link) {
+                        <li>
+                        <a 
+                            [routerLink]="link.path" 
+                            routerLinkActive #rla="routerLinkActive"
+                            >{{ link.label }}</a>
+                        </li>
+                    }
+                </ul>
+                <h6>Misc</h6>
+                <ul class="no-bullet">
+                    @for (link of navLinksMisc; track link) {
+                        <li>
+                        <a 
+                            [routerLink]="link.path" 
+                            routerLinkActive #rla="routerLinkActive"
+                            >{{ link.label }}</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div *ngIf="selectedId !== 0" class="col-12 col-md-6 col-xl-8">            
+            <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="selectedId == 0" class="col-12 col-md-9 col-xl-10">
+            <div class="d-flex align-items-center vh100">
+                <app-error-message class="flex-fill" errorTitle="No Kid Selected" errorMessage="Select a kid from the left column to get started"></app-error-message>                  
+            </div> 
+        </div>
+    </div>
+</div>
